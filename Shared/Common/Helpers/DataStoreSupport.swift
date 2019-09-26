@@ -19,7 +19,11 @@ public protocol LoginsStorageProtocol {
 }
 
 // We decorate the LoginsStorage with the LoginsStorageProtocol so that it's easy to mock and inject for unit testing.
-extension LoginsStorage: LoginsStorageProtocol { }
+extension LoginsStorage: LoginsStorageProtocol {
+    public func sync(unlockInfo: SyncUnlockInfo) throws {
+        ()
+    }
+}
 
 class DataStoreSupport {
     static let shared: DataStoreSupport = DataStoreSupport()
