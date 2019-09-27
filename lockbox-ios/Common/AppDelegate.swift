@@ -5,6 +5,7 @@
 import UIKit
 import Telemetry
 import SwiftKeychainWrapper
+import Glean
 
 let PostFirstRunKey = "firstrun"
 
@@ -50,6 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupAdjust()
 
         Dispatcher.shared.dispatch(action: LifecycleAction.startup)
+
+        Glean.shared.setUploadEnabled(true)
+        Glean.shared.initialize()
 
         return true
     }
